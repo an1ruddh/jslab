@@ -1,0 +1,32 @@
+<!--Write a JavaScript code that returns a passed string with letters in alphabetical order. Use addEventListener() method. -->
+<!DOCTYPE html>
+<style>
+   
+  </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort strings using javascript</title>
+</head>
+<body>
+    <input type="text" id = "input" placeholder="enter the string here">
+    <button id = "sort">sort</button>
+    <h2 id = "output"> HERE IS THE OUTPUT: </h2>
+    <script>
+        const input = document.getElementById('input');
+        const output =  document.getElementById('output')
+        const button = document.getElementById('sort')
+        button.addEventListener("click",()=>{
+            const inputvalue = input.value
+            const sortedval = Sort(inputvalue)
+            output.innerText = sortedval
+        })
+      function Sort(string){
+           return  string.split("").sort().join("")
+            
+      }
+    </script>
+</body>
+</html>
