@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jump Search</title>
+  <script>
+    function jumpSearch(arr, key) {
+      const n = arr.length;
+      const jumpSize = Math.floor(Math.sqrt(n));
+      let step = jumpSize;
+      let prev = 0;
+
+      // Finding the block where the key may be present
+      while (arr[Math.min(step, n) - 1] < key) {
+        prev = step;
+        step += jumpSize;
+
+        if (prev >= n) {
+          return -1;
+        }
+      }
+
+      // Performing linear search in the found block
+      while (arr[prev] < key) {
+        prev++;
+
+        if (prev === Math.min(step, n)) {
+          return -1;
+        }
+      }
+
+      if (arr[prev] === key) {
+        return prev;
+      }
+
+      return -1;
+    }
+
+    function performJumpSearch() {
+      const keyInput = document.getElementById("keyInput");
+      const numbersInput = document.getElementById("numbersInput");
+      const resultContainer = document.getElementById("resultContainer");
+
+      const key = parseInt(keyInput.value);
+      const numbers = numbersInput.value
+        .split(",")
+        .map(num => parseInt(num));
+
+      const index = jumpSearch(numbers, key);
+
+      if (index !== -1) {
+        resultContainer.textContent = `Success! Key ${key} found at index ${index}.`;
+      } else {
+        resultContainer.textContent = `Failure! Key ${key} not found.`;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Jump Search</h1>
+  <label for="keyInput">Enter the key:</label>
+  <input type="text" id="keyInput">
+  <br>
+  <label for="numbersInput">Enter the list of numbers (comma-separated):</label>
+  <input type="text" id="numbersInput">
+  <br>
+  <button onclick="performJumpSearch()">Search</button>
+  <br>
+  <div id="resultContainer"></div>
+</body>
+</html>

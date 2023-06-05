@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Object Properties</title>
+  <script>
+    function listObjectProperties() {
+      var name = document.getElementById("nameInput").value;
+      var dept = document.getElementById("deptInput").value;
+      var id = document.getElementById("idInput").value;
+
+      var student = {
+        name: name,
+        Dept: dept,
+        id: id
+      };
+
+      var properties = Object.values(student).join(", ");
+      document.getElementById("result").textContent = properties;
+    }
+  </script>
+</head>
+<body>
+  <h1>List Object Properties</h1>
+  <label for="nameInput">Name:</label>
+  <input type="text" id="nameInput"><br>
+  <label for="deptInput">Department:</label>
+  <input type="text" id="deptInput"><br>
+  <label for="idInput">ID:</label>
+  <input type="text" id="idInput"><br>
+  <button onclick="listObjectProperties()">List Properties</button>
+  <div id="result"></div>
+</body>
+</html>

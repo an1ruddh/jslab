@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Program</title>
+</head>
+<body>
+  <h1>Set Program</h1>
+  <input type="text" id="input" placeholder="Enter a value">
+  <button onclick="addValue()">Add Value</button>
+  
+  <button onclick="iterateOverSet()">Show</button>
+  
+  <ul id="values"></ul>
+
+  <script>
+    let set = new Set();
+  
+    function addValue() {
+      let value = document.getElementById("input").value;
+      set.add(value);
+    }
+
+   
+   
+    function iterateOverSet() {
+      let values = Array.from(set);
+      for (let value of values) {
+        let li = document.createElement("li");
+        li.textContent = value;
+        document.getElementById("values").appendChild(li) ;
+        
+        
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reverse Number</title>
+  <script>
+    // Add event listener once the DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get the input element and button element from the DOM
+      const input = document.getElementById('numberInput');
+      const button = document.getElementById('reverseButton');
+
+      // Add click event listener to the button
+      button.addEventListener('click', () => {
+        // Get the input value and convert it to a number
+        const inputValue = parseInt(input.value);
+
+        // Check if the input value is a valid number
+        if (!isNaN(inputValue)) {
+          // Reverse the number
+          const reversedNumber = reverseNumber(inputValue);
+
+          // Display the reversed number
+          alert(`Reversed Number: ${reversedNumber}`);
+        } else {
+          // Display an error message if the input value is not a valid number
+          alert('Invalid number! Please enter a valid number.');
+        }
+      });
+    });
+
+    // Function to reverse the given number
+    function reverseNumber(number) {
+      let reversed = 0;
+
+      // Reverse the number using modulo and division
+      while (number !== 0) {
+        const digit = number % 10;
+        reversed = reversed * 10 + digit;
+        number = Math.floor(number / 10);
+      }
+
+      return reversed;
+    }
+  </script>
+</head>
+<body>
+  <h1>Reverse Number</h1>
+  <label for="numberInput">Enter a number:</label>
+  <input type="number" id="numberInput">
+  <button id="reverseButton">Reverse</button>
+
+  <!-- The rest of your HTML code goes here -->
+</body>
+</html>

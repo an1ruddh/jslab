@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Test</title>
+  <script>
+    function numTest(number) {
+      return new Promise((resolve, reject) => {
+        if (number > 20) {
+          resolve(`${number} is greater than 20`);
+        } else if (number < 20) {
+          resolve(`${number} is smaller than 20`);
+        } else {
+          reject('It is 20');
+        }
+      });
+    }
+
+    function handleNumberTest() {
+      const input = document.getElementById('numberInput');
+      const resultContainer = document.getElementById('resultContainer');
+      const number = parseInt(input.value);
+
+      if (!isNaN(number)) {
+        numTest(number)
+          .then(result => {
+            resultContainer.textContent = result;
+          })
+          .catch(error => {
+            resultContainer.textContent = error;
+          });
+      } else {
+        resultContainer.textContent = 'Invalid number! Please enter a valid number.';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Number Test</h1>
+  <label for="numberInput">Enter a number:</label>
+  <input type="number" id="numberInput">
+  <button onclick="handleNumberTest()">Test Number</button>
+  <div id="resultContainer"></div>
+
+  <!-- The rest of your HTML code goes here -->
+</body>
+</html>

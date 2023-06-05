@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Manipulation</title>
+  <script>
+    let myArray = [];
+
+    function insertElement() {
+      const indexInput = document.getElementById("indexInput");
+      const valueInput = document.getElementById("valueInput");
+      const index = parseInt(indexInput.value);
+      const value = valueInput.value;
+
+      if (!isNaN(index) && index >= 0 && index <= myArray.length) {
+       
+        myArray.splice(index, 0, value);
+        displayArray();
+      }
+    }
+
+    function removeElement() {
+      const indexInput = document.getElementById("indexInput");
+      const index = parseInt(indexInput.value);
+
+      if (!isNaN(index) && index > 0 && index < myArray.length) {
+        myArray.splice(index, 1);
+        displayArray();
+      }
+    }
+
+    function displayArray() {
+      const arrayContainer = document.getElementById("arrayContainer");
+      arrayContainer.textContent = myArray.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h1>Array Manipulation</h1>
+  <label for="indexInput">Index:</label>
+  <input type="number" id="indexInput">
+  <br>
+  <label for="valueInput">Value:</label>
+  <input type="text" id="valueInput">
+  <br>
+  <button onclick="insertElement()">Insert</button>
+  <button onclick="removeElement()">Remove</button>
+  <br>
+  <div id="arrayContainer"></div>
+</body>
+</html>

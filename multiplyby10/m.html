@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiply by 10</title>
+  <script>
+    function multiplyBy10() {
+      const inputArray = document.getElementById("inputArray").value.split(",").map(Number);
+
+      if (inputArray.some(isNaN)) {
+        document.getElementById("result").textContent = "Invalid input! Please enter a valid array of numbers.";
+        return;
+      }
+
+      const multipliedNumbers = inputArray.map(number => number * 10);
+
+      document.getElementById("result").textContent = multipliedNumbers.join(", ");
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Multiply by 10</h1>
+  <label for="inputArray">Enter an array of numbers:</label>
+  <input type="text" id="inputArray" placeholder="e.g., 2, 4, 6, 8, 10">
+  <button onclick="multiplyBy10()">Multiply by 10</button><br>
+  <label for="result">Result:</label>
+  <div id="result"></div>
+</body>
+</html>

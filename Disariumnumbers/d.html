@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Disarium Numbers</title>
+  <script>
+    function isDisariumNumber(number) {
+      const numString = number.toString();
+      let sum = 0;
+
+      for (let i = 0; i < numString.length; i++) {
+        sum += Math.pow(parseInt(numString[i]), i + 1);
+      }
+
+      return sum === number;
+    }
+
+    function printDisariumNumbers() {
+      const resultContainer = document.getElementById("resultContainer");
+
+      resultContainer.textContent = "Disarium Numbers: ";
+
+      for (let i = 1; i <= 100; i++) {
+        if (isDisariumNumber(i)) {
+          resultContainer.textContent += i + " ";
+        }
+      }
+    }
+  </script>
+
+
+
+</head>
+<body>
+  <h1>Disarium Numbers</h1>
+  <button onclick="printDisariumNumbers()">Print Disarium Numbers</button>
+  <br>
+  <div id="resultContainer"></div>
+</body>
+</html>

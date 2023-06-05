@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Even Numbers</title>
+  <script>
+    const sumEvens = (numbers) => {
+      // Filter out the even numbers
+      const evenNumbers = numbers.filter(num => num % 2 === 0);
+
+      // Calculate the sum of even numbers
+      const sum = evenNumbers.reduce((acc, curr) => acc + curr, 0);
+
+      return sum;
+    }
+
+    function calculateSum() {
+      const input = document.getElementById("numberInput");
+      const output = document.getElementById("sumOutput");
+      
+      // Get the input numbers as a comma-separated string
+      const inputNumbers = input.value;
+
+      // Convert the string to an array of numbers
+      const numbers = inputNumbers.split(",").map(num => parseInt(num));
+
+      // Calculate the sum of even numbers
+      const sum = sumEvens(numbers);
+
+      // Display the sum of even numbers
+      output.textContent = sum;
+    }
+  </script>
+</head>
+<body>
+  <h1>Sum of Even Numbers</h1>
+  <label for="numberInput">Enter numbers (comma-separated):</label>
+  <input type="text" id="numberInput">
+  <button onclick="calculateSum()">Calculate Sum</button>
+  <br>
+  <label for="sumOutput">Sum of Even Numbers:</label>
+  <span id="sumOutput"></span>
+</body>
+</html>

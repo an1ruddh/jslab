@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <script>
+    function takeTrip() {
+      const location = prompt("Enter a location:");
+
+      function tripToParis(location) {
+        return new Promise((resolve, reject) => {
+          if (location === "Paris") {
+            resolve("Let's take a trip to Paris");
+          } else {
+            reject("Invalid Location");
+          }
+        });
+      }
+
+      tripToParis(location)
+        .then(message => {
+          alert(message);
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
+  </script>
+</head>
+<body>
+  <h2>Take a Trip</h2>
+  
+  <button onclick="takeTrip()">Take a Trip</button>
+</body>
+</html>

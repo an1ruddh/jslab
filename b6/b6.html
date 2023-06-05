@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <script>
+    const convertWeight = weightKg => {
+      const weightLbs = weightKg * 2.2;
+
+      if (weightLbs > 150) {
+        return "obese";
+      } else if (weightLbs >= 100 && weightLbs <= 150) {
+        return "you are ok";
+      } else {
+        return "underweight";
+      }
+    };
+
+    function handleConversion() {
+      const weightInput = parseFloat(prompt("Enter weight in Kg:"));
+      
+      if (!isNaN(weightInput)) {
+        const weightStatus = convertWeight(weightInput);
+        alert(`Weight status: ${weightStatus}`);
+      } else {
+        alert("Invalid input");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Weight Conversion</h2>
+  
+  <button onclick="handleConversion()">Convert Weight</button>
+</body>
+</html>

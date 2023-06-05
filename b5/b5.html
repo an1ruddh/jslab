@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <script>
+   function bookFlight() {
+  return new Promise((resolve, reject) => {
+    const isFlightBookedInput = prompt("Is the flight booked? (true/false)");
+
+    const isFlightBooked = JSON.parse(isFlightBookedInput); // Parse the user input as boolean
+
+    // Simulating an asynchronous operation
+    setTimeout(() => {
+      if (isFlightBooked) {
+        resolve("Flight booked successfully");
+      } else {
+        reject("Flight booking failed");
+      }
+    }, 2000); // Simulating a delay of 2 seconds
+  });
+}
+
+function bookHotel() {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous operation
+    setTimeout(() => {
+      const isHotelBooked = true; // Set to true to simulate a successful hotel booking
+
+      if (isHotelBooked) {
+        resolve("Hotel booked successfully");
+      } else {
+        reject("Hotel booking failed");
+      }
+    }, 2000); // Simulating a delay of 2 seconds
+  });
+}
+
+function bookHotelAfterFlight() {
+  bookFlight()
+    .then(flightMessage => {
+      alert(flightMessage);
+      return bookHotel();
+    })
+    .then(hotelMessage => {
+      alert(hotelMessage);
+    })
+    .catch(error => {
+      alert(error);
+    });
+}
+
+  </script>
+</head>
+<body>
+  <h2>Book a Hotel after Booking a Flight</h2>
+  
+  <button onclick="bookHotelAfterFlight()">Book Hotel after Flight</button>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function mapVsObjectPerformance() {
+      const iterations = 1000; // Number of iterations for the test
+      
+      // Performance test using Map
+      console.time('Map Performance');
+      const map = new Map();
+      
+      for (let i = 0; i < iterations; i++) {
+        const key = 'key' + i;
+        const value = 'value' + i;
+        map.set(key, value);
+      }
+      
+      for (let i = 0; i < iterations; i++) {
+        const key = 'key' + i;
+        map.delete(key);
+      }
+      
+      console.timeEnd('Map Performance');
+      
+      // Performance test using Object
+      console.time('Object Performance');
+      const object = {};
+      
+      for (let i = 0; i < iterations; i++) {
+        const key = 'key' + i;
+        const value = 'value' + i;
+        object[key] = value;
+      }
+      
+      for (let i = 0; i < iterations; i++) {
+        const key = 'key' + i;
+        delete object[key];
+      }
+      
+      console.timeEnd('Object Performance');
+    }
+  </script>
+</head>
+<body>
+  <h2>Map vs Object Performance Test</h2>
+  
+  <button onclick="mapVsObjectPerformance()">Run Performance Test</button>
+  
+  <div id="output"></div>
+</body>
+</html>

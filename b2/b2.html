@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #output {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function setVsArrayPerformance() {
+      const iterations = 1000; // Number of iterations for the test
+      
+      // Performance test using Set
+      console.time('Set Performance');
+      const set = new Set();
+      
+      for (let i = 0; i < iterations; i++) {
+        const value = 'value' + i;
+        set.add(value);
+      }
+      
+      for (let i = 0; i < iterations; i++) {
+        const value = 'value' + i;
+        set.has(value);
+      }
+      
+      console.timeEnd('Set Performance');
+      
+      // Performance test using Array
+      console.time('Array Performance');
+      const array = [];
+      
+      for (let i = 0; i < iterations; i++) {
+        const value = 'value' + i;
+        array.push(value);
+      }
+      
+      for (let i = 0; i < iterations; i++) {
+        const value = 'value' + i;
+        array.includes(value);
+      }
+      
+      console.timeEnd('Array Performance');
+    }
+  </script>
+</head>
+<body>
+  <h2>Set vs Array Performance Test</h2>
+  
+  <button onclick="setVsArrayPerformance()">Run Performance Test</button>
+  
+  <div id="output"></div>
+</body>
+</html>

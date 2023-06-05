@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML CSS JS Map Example</title>
+    <style>
+        /* CSS styles */
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML CSS JS Map Example</h1>
+
+    <button onclick="storeValue()">Store Value</button>
+    <button onclick="retrieveValue()">Retrieve Value</button>
+    <button onclick="iterateMap()">Iterate Map</button>
+
+    <div id="output"></div>
+
+    <script>
+        // JavaScript code
+        var myMap = {};
+
+        function storeValue() {
+            var key = prompt("Enter key:");
+            var value = prompt("Enter value:");
+            myMap[key] = value;
+        }
+
+        function retrieveValue() {
+            var key = prompt("Enter key to retrieve value:");
+            var value = myMap[key];
+            if (value !== undefined) {
+                alert("Value: " + value);
+            } else {
+                alert("Key not found!");
+            }
+        }
+
+        function iterateMap() {
+            var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+
+            for (var key in myMap) {
+                var value = myMap[key];
+                outputDiv.innerHTML += key + " -> " + value + "<br>";
+            }
+        }
+    </script>
+</body>
+</html>

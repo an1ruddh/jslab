@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Manipulation</title>
+  <script>
+    // Function to capitalize the first letter of each word in a string
+    function capitalizeFirstLetter(str) {
+      return str.replace(/\b\w/g, function (match) {
+        return match.toUpperCase();
+      });
+    }
+
+    // Function to insert a string within another string at a particular position
+    function insertString(originalString, stringToInsert, position) {
+      return originalString.slice(0, position) + stringToInsert + originalString.slice(position);
+    }
+
+    // Function to check if an input is a string or not
+    function isString(input) {
+      return typeof input === 'string';
+    }
+
+    // Function to split a string and convert it into an array of words
+    function splitStringIntoArray(str) {
+      return str.split(" ");
+    }
+
+    // Function to handle the form submission
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      // Get the input value
+      const inputString = document.getElementById("inputString").value;
+      const insertStringInput = document.getElementById("insertStringInput").value;
+      const insertPositionInput = parseInt(document.getElementById("insertPositionInput").value);
+
+      // Call the respective functions and display the results
+      const capitalizedResult = capitalizeFirstLetter(inputString);
+      document.getElementById("capitalizeResult").textContent = capitalizedResult;
+
+      const insertedResult = insertString(inputString, insertStringInput, insertPositionInput);
+      document.getElementById("insertResult").textContent = insertedResult;
+
+      const isStringResult = isString(inputString);
+      document.getElementById("checkStringResult").textContent = isStringResult ? "Input is a string." : "Input is not a string.";
+
+      const splitResult = splitStringIntoArray(inputString);
+      document.getElementById("splitResult").textContent = splitResult.join(" , ");
+    }
+  </script>
+</head>
+<body>
+  <h1>String Manipulation</h1>
+  <form onsubmit="handleSubmit(event)">
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString" required>
+
+    <label for="insertStringInput">String to insert:</label>
+    <input type="text" id="insertStringInput" required>
+
+    <label for="insertPositionInput">Insert position:</label>
+    <input type="number" id="insertPositionInput" required>
+
+    <button type="submit">Perform Operations</button>
+  </form>
+
+  <div>
+    <h3>Results:</h3>
+    <div id="capitalizeResult"> capital : </div>
+    <div id="insertResult"> insert : </div>
+    <div id="checkStringResult"> check : </div>
+    <div id="splitResult"> split : </div>
+  </div>
+</body>
+</html>

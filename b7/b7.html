@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <script>
+    function checkInfection(virusComposition, bloodComposition) {
+      let virusIndex = 0;
+      let bloodIndex = 0;
+
+      while (virusIndex < virusComposition.length && bloodIndex < bloodComposition.length) {
+        if (virusComposition[virusIndex] === bloodComposition[bloodIndex]) {
+          bloodIndex++;
+        }
+
+        virusIndex++;
+      }
+
+      return bloodIndex === bloodComposition.length ? "POSITIVE" : "NEGATIVE";
+    }
+
+    function identifyInfection() {
+      const virusComposition = prompt("Enter the virus composition:");
+      const bloodComposition = prompt("Enter the blood composition:");
+
+      const infectionStatus = checkInfection(virusComposition, bloodComposition);
+      alert(`Infection status: ${infectionStatus}`);
+    }
+  </script>
+</head>
+<body>
+  <h2>Infection Identification</h2>
+  
+  <button onclick="identifyInfection()">Identify Infection</button>
+</body>
+</html>
